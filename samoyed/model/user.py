@@ -6,7 +6,7 @@ from samoyed.model import Base
 class User(Base):
     email = Column(String(100), primary_key=True)
     password = Column(String(100), nullable=True)
-    receipt_code = Column(Integer, nullable=True)
+    receipt_code = Column(Integer, autoincrement=True)
     apply_type = Column(Enum("COMMON", "MEISTER", "SOCIAL_ONE_PARENT",
                              "SOCIAL_FROM_NORTH", "SOCIAL_MULTICULTURAL",
                              "SOCIAL_BASIC_LIVING", "SOCIAL_LOWEST_INCOME",

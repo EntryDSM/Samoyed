@@ -1,4 +1,4 @@
-from sqlalchemy import Column, DATETIME, ForeignKey, SMALLINT
+from sqlalchemy import Column, DATETIME, ForeignKey, SMALLINT, String
 
 from samoyed.model import Base
 
@@ -11,4 +11,4 @@ class Status(Base):
     is_passed_interview = Column(SMALLINT, nullable=True)
     is_final_submit = Column(SMALLINT, nullable=True)
     submitted_at = Column(DATETIME, nullable=True)
-    exam_code = Column(DATETIME, nullable=True)
+    exam_code = Column(String(6), nullable=True)
