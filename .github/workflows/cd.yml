@@ -1,0 +1,23 @@
+name: Deploy
+on:
+  release:
+    types: [published]
+    
+jobs:
+  push_to_registry:
+    name: Push Docker image to Docker Hub
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out the repo
+        uses: actions/checkout@v2
+        
+      - name: Create Docker image
+        run: docker build -t samoyed .
+        
+      - name: Push to registry  
+        uses: elgohr/Publish-Docker-Github-Action@master
+        with:
+          username: ${{ secrets.DOCKER_USERNAME }}
+          password: ${{ secrets.DOCKER_PASSWORD }}
+          registry: ${{ secrets.DOCKER_REGISTRY }}
+          dockerfile: . Dockerfile
