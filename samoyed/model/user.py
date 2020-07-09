@@ -4,18 +4,15 @@ from samoyed.model import Base
 
 
 class User(Base):
-    email = Column(String(100), primary_key=True)
-    password = Column(String(100), nullable=True)
-    receipt_code = Column(Integer, autoincrement=True)
-    apply_type = Column(Enum("COMMON", "MEISTER", "SOCIAL_ONE_PARENT",
-                             "SOCIAL_FROM_NORTH", "SOCIAL_MULTICULTURAL",
-                             "SOCIAL_BASIC_LIVING", "SOCIAL_LOWEST_INCOME",
-                             "SOCIAL_TEEN_HOUSEHOLDER"), nullable=True)
-    additional_type = Column(Enum("NATIONAL_MERIT", "PRIVILEGED_ADMISSION", "NOT_APPLICABLE"))
-    grade_type = Column(Enum("GED", "UNGRADUATED", "GRADUATED"), nullable=True)
+    receipt_code = Column(Integer, autoincrement=True, primary_key=True)
+    email = Column(String(100), nullable=False)
+    password = Column(String(100), nullable=False)
+    apply_type = Column(String(20), nullable=True)
+    additional_type = Column(String(20), nullable=True)
+    grade_type = Column(String(20), nullable=True)
     is_daejeon = Column(SMALLINT, nullable=True)
     name = Column(String(15), nullable=True)
-    sex = Column(Enum("FEMALE", "MALE"), nullable=True)
+    sex = Column(String(20), nullable=True)
     birth_date = Column(DATE, nullable=True)
     parent_name = Column(String(15), nullable=True)
     parent_tel = Column(String(20), nullable=True)
