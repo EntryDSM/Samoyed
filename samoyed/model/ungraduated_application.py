@@ -4,7 +4,7 @@ from samoyed.model import Base
 
 
 class UnGraduatedApplication(Base):
-    user_email = Column(ForeignKey("user.receipt_code"), primary_key=True)
+    user_receipt_code = Column(ForeignKey("user.receipt_code"), primary_key=True)
     student_number = Column(String(5), nullable=True)
     school_code = Column(ForeignKey("school.school_code"), nullable=True)
     school_tel = Column(String(20), nullable=True)

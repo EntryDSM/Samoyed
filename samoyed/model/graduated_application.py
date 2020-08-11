@@ -1,10 +1,10 @@
-from sqlalchemy import Column, String, DATETIME, ForeignKey, Integer
+from sqlalchemy import Column, String, DATETIME, ForeignKey, Integer, DATE
 
 from samoyed.model import Base
 
 
 class GraduatedApplication(Base):
-    user_email = Column(ForeignKey("user.receipt_code"), primary_key=True)
+    user_receipt_code = Column(ForeignKey("user.receipt_code"), primary_key=True)
     student_number = Column(String(5), nullable=True)
     school_code = Column(ForeignKey("school.school_code"), nullable=True)
     school_tel = Column(String(20), nullable=True)
@@ -22,3 +22,4 @@ class GraduatedApplication(Base):
     english = Column(String(6), nullable=True)
     created_at = Column(DATETIME, nullable=False)
     modified_at = Column(DATETIME, nullable=False)
+    graduated_date = Column(DATE, nullable=False)

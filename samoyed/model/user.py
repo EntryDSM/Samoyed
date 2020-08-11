@@ -21,7 +21,6 @@ class User(Base):
     detail_address = Column(String(250), nullable=True)
     post_code = Column(String(5), nullable=True)
     user_photo = Column(String(45), nullable=True)
-    home_tel = Column(String(45), nullable=True)
     self_introduction = Column(String(1600), nullable=True)
     study_plan = Column(String(1600), nullable=True)
     created_at = Column(DATETIME, nullable=False)
