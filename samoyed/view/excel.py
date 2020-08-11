@@ -7,3 +7,7 @@ class AdmissionTicket(Resource):
 
 class Applicant(Resource):
     pass
+
+
+class CompetitionStatus(Resource):
+    pass
