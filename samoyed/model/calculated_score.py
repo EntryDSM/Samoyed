@@ -1,6 +1,6 @@
 from sqlalchemy import Column, DATETIME, ForeignKey, DECIMAL, Integer
 
-from samoyed.model import Base
+from model import Base
 
 
 class CalculatedScore(Base):

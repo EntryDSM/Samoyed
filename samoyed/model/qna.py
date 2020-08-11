@@ -1,6 +1,6 @@
 from sqlalchemy import Column, String, DATETIME, ForeignKey, Integer, Enum, SMALLINT
 
-from samoyed.model import Base
+from model import Base
 
 
 class Qna(Base):

@@ -1,6 +1,6 @@
 from sqlalchemy import Column, String
 
-from samoyed.model import Base
+from model import Base
 
 
 class School(Base):

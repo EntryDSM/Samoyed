@@ -1,6 +1,6 @@
 from sqlalchemy import Column, DATETIME, ForeignKey, SMALLINT, String
 
-from samoyed.model import Base
+from model import Base
 
 
 class Status(Base):

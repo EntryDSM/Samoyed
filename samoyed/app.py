@@ -3,7 +3,7 @@ from flask_jwt_extended import JWTManager
 from flask_cors import CORS
 
 from samoyed import JWT_SECRET_KEY
-from samoyed.router import bp_excel
+from router import bp_excel
 
 
 def create_app():

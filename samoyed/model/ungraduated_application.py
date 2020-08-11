@@ -1,6 +1,6 @@
 from sqlalchemy import Column, DATETIME, ForeignKey, Integer, String
 
-from samoyed.model import Base
+from model import Base
 
 
 class UnGraduatedApplication(Base):

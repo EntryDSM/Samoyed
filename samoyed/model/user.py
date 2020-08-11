@@ -1,6 +1,6 @@
 from sqlalchemy import Column, DATETIME, Integer, String, Enum, SMALLINT, DATE
 
-from samoyed.model import Base
+from model import Base
 
 
 class User(Base):
