@@ -1,4 +1,8 @@
+import datetime
 from flask_restful import Resource
+from flask_jwt_extended import jwt_required
+
+from controller.applicant import create_applicant_excel
 
 
 class AdmissionTicket(Resource):
@@ -6,7 +10,11 @@ class AdmissionTicket(Resource):
 
 
 class Applicant(Resource):
-    pass
+
+    def get(self):
+        date = datetime.datetime.now().strftime('%Y-%m-%d-%H:%M:%S')
+
+        return create_applicant_excel(date)
 
 
 class CompetitionStatus(Resource):
