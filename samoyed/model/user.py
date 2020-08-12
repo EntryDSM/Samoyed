@@ -4,6 +4,8 @@ from samoyed.model import Base
 
 
 class User(Base):
+    __tablename__ = 'user'
+
     receipt_code = Column(Integer, autoincrement=True, primary_key=True)
     email = Column(String(100), nullable=False)
     password = Column(String(100), nullable=False)
@@ -16,7 +18,7 @@ class User(Base):
     birth_date = Column(DATE, nullable=True)
     parent_name = Column(String(15), nullable=True)
     parent_tel = Column(String(20), nullable=True)
-    application_tel = Column(String(20), nullable=True)
+    applicant_tel = Column(String(20), nullable=True)
     address = Column(String(250), nullable=True)
     detail_address = Column(String(250), nullable=True)
     post_code = Column(String(5), nullable=True)

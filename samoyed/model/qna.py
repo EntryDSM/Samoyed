@@ -4,6 +4,8 @@ from samoyed.model import Base
 
 
 class Qna(Base):
+    __tablename__ = 'qna'
+
     qna_id = Column(Integer, primary_key=True)
     admin_email = Column(ForeignKey("admin.email"), nullable=True)
     user_receipt_code = Column(ForeignKey("user.receipt_code"), nullable=True)

@@ -4,6 +4,8 @@ from samoyed.model import Base
 
 
 class Status(Base):
+    __tablename__ = 'status'
+
     user_receipt_code = Column(ForeignKey("user.receipt_code"), primary_key=True)
     is_paid = Column(SMALLINT, nullable=True)
     is_printed_application_arrived = Column(SMALLINT, nullable=True)
