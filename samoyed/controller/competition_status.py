@@ -1,4 +1,5 @@
 import requests
+import json
 from openpyxl import load_workbook
 from flask import abort
 
@@ -10,8 +11,11 @@ def create_competition_status_excel(now_date, token):
         xlsx = load_workbook(f"static/competition_status.xlsx")
         sheet = xlsx.get_active_sheet()
 
-        response = requests.get(STATUS_URL, params={"Authorization": f"Bearer {token}",
-                                                    "area": "all"})
+        result = requests.get(STATUS_URL, params={"Authorization": token})
+
+        response = json.loads(result.text)
+
+        print(result.text)
 
         sheet.cell(4, 6, response['daejeon']['meister_applicant']['applicant_count'])
         sheet.cell(5, 6, response['daejeon']['social_applicant']['applicant_count'])

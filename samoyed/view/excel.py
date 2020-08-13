@@ -1,6 +1,6 @@
 import datetime
 from flask_restful import Resource
-from flask_jwt_extended import jwt_required, get_raw_jwt
+from flask_jwt_extended import jwt_required
 from flask import request
 
 from controller.applicant import create_applicant_excel
@@ -9,6 +9,8 @@ from controller.competition_status import create_competition_status_excel
 
 
 class AdmissionTicket(Resource):
+
+    @jwt_required
     def get(self):
         date = datetime.datetime.now().strftime('%Y-%m-%d-%H:%M:%S')
 
@@ -16,6 +18,8 @@ class AdmissionTicket(Resource):
 
 
 class Applicant(Resource):
+
+    @jwt_required
     def get(self):
         date = datetime.datetime.now().strftime('%Y-%m-%d-%H:%M:%S')
 
@@ -23,9 +27,10 @@ class Applicant(Resource):
 
 
 class CompetitionStatus(Resource):
+
     @jwt_required
     def post(self):
         date = datetime.datetime.now().strftime('%Y-%m-%d-%H:%M:%S')
-        token = get_raw_jwt()
+        token = request.headers['Authorization']
 
         return create_competition_status_excel(date, token)
