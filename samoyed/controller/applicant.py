@@ -1,9 +1,8 @@
-import shutil
 from openpyxl import load_workbook
 from flask import abort
 
-from controller import (print_apply_type, print_additional_type, print_grade_type,
-                        print_is_daejeon, print_sex, print_graduated_year, print_origin_school, print_student_number)
+from controller import (print_apply_type, print_additional_type, print_grade_type, print_is_daejeon,
+                        print_sex, print_graduated_year, print_origin_school, print_student_number)
 from model import session
 from model.user import User
 from model.status import Status

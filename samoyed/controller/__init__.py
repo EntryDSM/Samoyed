@@ -1,5 +1,3 @@
-from marshmallow.fields import Integer, String
-
 from model import session
 from model.graduated_application import GraduatedApplication
 from model.school import School
