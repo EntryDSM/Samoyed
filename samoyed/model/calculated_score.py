@@ -4,6 +4,8 @@ from samoyed.model import Base
 
 
 class CalculatedScore(Base):
+    __tablename__ = 'calculated_score'
+
     user_receipt_code = Column(ForeignKey("user.receipt_code"), primary_key=True)
     volunteer_score = Column(DECIMAL(10, 5), nullable=True)
     attendance_score = Column(Integer, nullable=True)

@@ -4,6 +4,8 @@ from samoyed.model import Base
 
 
 class GraduatedApplication(Base):
+    __tablename__ = 'graduated_application'
+
     user_receipt_code = Column(ForeignKey("user.receipt_code"), primary_key=True)
     student_number = Column(String(5), nullable=True)
     school_code = Column(ForeignKey("school.school_code"), nullable=True)
