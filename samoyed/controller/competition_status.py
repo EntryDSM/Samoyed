@@ -11,11 +11,9 @@ def create_competition_status_excel(now_date, token):
         xlsx = load_workbook(f"static/competition_status.xlsx")
         sheet = xlsx.get_active_sheet()
 
-        result = requests.get(STATUS_URL, params={"Authorization": token})
+        result = requests.get(STATUS_URL, headers={"Authorization": token})
 
         response = json.loads(result.text)
-
-        print(result.text)
 
         sheet.cell(4, 6, response['daejeon']['meister_applicant']['applicant_count'])
         sheet.cell(5, 6, response['daejeon']['social_applicant']['applicant_count'])

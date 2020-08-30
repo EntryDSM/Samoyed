@@ -94,3 +94,9 @@ def print_student_number(receipt_code, grade_type):
         graduated_application = session.query(GraduatedApplication) \
             .filter(GraduatedApplication.user_receipt_code == receipt_code).first()
         return f"{graduated_application.student_number}"
+
+
+def create_str_cell_location(row, column):
+    str_column = chr(64 | column)
+
+    return f"{str_column}{row}"

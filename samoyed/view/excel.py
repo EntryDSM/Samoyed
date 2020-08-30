@@ -29,7 +29,7 @@ class Applicant(Resource):
 class CompetitionStatus(Resource):
 
     @jwt_required
-    def post(self):
+    def get(self):
         date = datetime.datetime.now().strftime('%Y-%m-%d-%H:%M:%S')
         token = request.headers['Authorization']
 
