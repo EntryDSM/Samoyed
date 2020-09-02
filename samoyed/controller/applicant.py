@@ -1,15 +1,15 @@
 from openpyxl import load_workbook
 from flask import abort
 
-from controller import (print_apply_type, print_additional_type, print_grade_type, print_is_daejeon,
+from samoyed.controller import (print_apply_type, print_additional_type, print_grade_type, print_is_daejeon,
                         print_sex, print_graduated_year, print_origin_school, print_student_number)
-from model import session
-from model.user import User
-from model.status import Status
-from model.ungraduated_application import UnGraduatedApplication
-from model.graduated_application import GraduatedApplication
-from model.calculated_score import CalculatedScore
-from config import BASE_URL
+from samoyed.model import session
+from samoyed.model.user import User
+from samoyed.model.status import Status
+from samoyed.model.ungraduated_application import UnGraduatedApplication
+from samoyed.model.graduated_application import GraduatedApplication
+from samoyed.model.calculated_score import CalculatedScore
+from samoyed.config import BASE_URL
 
 
 def create_applicant_excel(now_date):

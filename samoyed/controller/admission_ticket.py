@@ -2,11 +2,11 @@ import openpyxl
 from openpyxl.drawing.image import Image
 from flask import abort
 
-from config import BASE_URL
-from model.user import User
-from model.status import Status
-from model import session
-from controller import print_origin_school, print_is_daejeon, print_apply_type, create_str_cell_location
+from samoyed.config import BASE_URL
+from samoyed.model.user import User
+from samoyed.model.status import Status
+from samoyed.model import session
+from samoyed.controller import print_origin_school, print_is_daejeon, print_apply_type, create_str_cell_location
 
 
 def create_admission_ticket(now_date):
