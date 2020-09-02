@@ -18,6 +18,7 @@ jobs:
       - name: Push to registry  
         uses: elgohr/Publish-Docker-Github-Action@master
         with:
+          name: samoyed
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_PASSWORD }}
           registry: ${{ secrets.DOCKER_REGISTRY }}
