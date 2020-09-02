@@ -3,7 +3,7 @@ import json
 from openpyxl import load_workbook
 from flask import abort
 
-from config import BASE_URL, STATUS_URL
+from samoyed.config import BASE_URL, STATUS_URL
 
 
 def create_competition_status_excel(now_date, token):

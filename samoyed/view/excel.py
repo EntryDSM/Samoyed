@@ -3,9 +3,9 @@ from flask_restful import Resource
 from flask_jwt_extended import jwt_required
 from flask import request
 
-from controller.applicant import create_applicant_excel
-from controller.admission_ticket import create_admission_ticket
-from controller.competition_status import create_competition_status_excel
+from samoyed.controller.applicant import create_applicant_excel
+from samoyed.controller.admission_ticket import create_admission_ticket
+from samoyed.controller.competition_status import create_competition_status_excel
 
 
 class AdmissionTicket(Resource):
