@@ -8,7 +8,7 @@ from samoyed.config import BASE_URL, STATUS_URL
 
 def create_competition_status_excel(now_date, token):
     try:
-        xlsx = load_workbook(f"static/competition_status.xlsx")
+        xlsx = load_workbook(f"samoyed/static/competition_status.xlsx")
         sheet = xlsx.get_active_sheet()
 
         result = requests.get(STATUS_URL, headers={"Authorization": token})
@@ -99,9 +99,9 @@ def create_competition_status_excel(now_date, token):
         sheet.cell(19, 9, response['daejeon']['social_applicant']['71-80'])
         sheet.cell(20, 9, response['daejeon']['social_applicant']['-70'])
 
-        xlsx.save(f"static/competition_status_{now_date}.xlsx")
+        xlsx.save(f"samoyed/static/competition_status_{now_date}.xlsx")
 
-        return f"{BASE_URL}static/competition_status_{now_date}.xlsx"
+        return f"{BASE_URL}samoyed/static/competition_status_{now_date}.xlsx"
 
     except Exception as e:
         return abort(500, e)

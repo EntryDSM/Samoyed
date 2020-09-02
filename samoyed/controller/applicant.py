@@ -14,7 +14,7 @@ from samoyed.config import BASE_URL
 
 def create_applicant_excel(now_date):
     try:
-        xlsx = load_workbook(f"static/applicant_info.xlsx")
+        xlsx = load_workbook(f"samoyed/static/applicant_info.xlsx")
         sheet = xlsx.get_active_sheet()
 
         users = session.query(User, CalculatedScore, Status).join(CalculatedScore).join(Status).all()
@@ -105,9 +105,9 @@ def create_applicant_excel(now_date):
             sheet.cell(idx, 71, user.User.self_introduction)
             sheet.cell(idx, 72, user.User.study_plan)
 
-        xlsx.save(f"static/applicant_info_{now_date}.xlsx")
+        xlsx.save(f"samoyed/static/applicant_info_{now_date}.xlsx")
 
-        return f"{BASE_URL}static/applicant_info_{now_date}.xlsx"
+        return f"{BASE_URL}samoyed/static/applicant_info_{now_date}.xlsx"
 
     except Exception as e:
         abort(500, e)

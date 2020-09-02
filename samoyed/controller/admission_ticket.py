@@ -11,7 +11,7 @@ from samoyed.controller import print_origin_school, print_is_daejeon, print_appl
 
 def create_admission_ticket(now_date):
     try:
-        xlsx = openpyxl.load_workbook(f"static/admission_ticket.xlsx")
+        xlsx = openpyxl.load_workbook(f"samoyed/static/admission_ticket.xlsx")
         sheet = xlsx.get_active_sheet()
 
         users = session.query(User, Status).join(Status).all()
@@ -97,9 +97,9 @@ def create_admission_ticket(now_date):
                 sheet.cell(29 + (idx // 4 * 41), 12, print_apply_type(user.User.apply_type))
                 sheet.cell(31 + (idx // 4 * 41), 12, user.User.receipt_code)
 
-        xlsx.save(f"static/admission_ticket_{now_date}.xlsx")
+        xlsx.save(f"samoyed/static/admission_ticket_{now_date}.xlsx")
 
-        return f"{BASE_URL}static/admission_ticket_{now_date}.xlsx"
+        return f"{BASE_URL}samoyed/static/admission_ticket_{now_date}.xlsx"
 
     except Exception as e:
         return abort(500, e)
