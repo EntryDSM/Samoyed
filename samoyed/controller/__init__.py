@@ -1,7 +1,7 @@
-from model import session
-from model.graduated_application import GraduatedApplication
-from model.school import School
-from model.ungraduated_application import UnGraduatedApplication
+from samoyed.model import session
+from samoyed.model.graduated_application import GraduatedApplication
+from samoyed.model.school import School
+from samoyed.model.ungraduated_application import UnGraduatedApplication
 
 
 def print_apply_type(apply_type):
