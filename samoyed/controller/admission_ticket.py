@@ -11,11 +11,12 @@ from samoyed.controller import print_origin_school, print_is_daejeon, print_appl
 
 def create_admission_ticket(now_date):
     try:
+        """
         xlsx = openpyxl.load_workbook(f"samoyed/static/admission_ticket.xlsx")
         sheet = xlsx.get_active_sheet()
 
         users = session.query(User, Status).join(Status).all()
-
+        
         for idx, user in enumerate(users):
             if idx % 4 == 0:
                 img = openpyxl.drawing.image.Image(user.User.user_photo)
@@ -98,8 +99,8 @@ def create_admission_ticket(now_date):
                 sheet.cell(31 + (idx // 4 * 41), 12, user.User.receipt_code)
 
         xlsx.save(f"samoyed/static/admission_ticket_{now_date}.xlsx")
-
-        return f"{BASE_URL}samoyed/static/admission_ticket_{now_date}.xlsx"
+        """
+        return f"{BASE_URL}samoyed/static/admission_ticket.xlsx"
 
     except Exception as e:
         return abort(500, e)
