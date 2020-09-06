@@ -13,6 +13,8 @@ def create_competition_status_excel(now_date, token):
 
         result = requests.get(STATUS_URL, headers={"Authorization": token})
 
+        print(result)
+
         response = json.loads(result.text)
 
         sheet.cell(4, 6, response['daejeon']['meister_applicant']['applicant_count'])
