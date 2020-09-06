@@ -1,9 +1,11 @@
 import requests
 import json
+from io import BytesIO
 from openpyxl import load_workbook
-from flask import abort
+from openpyxl.writer.excel import save_virtual_workbook
+from flask import abort, send_file
 
-from samoyed.config import BASE_URL, STATUS_URL
+from samoyed.config import STATUS_URL
 
 
 def create_competition_status_excel(now_date, token):
@@ -99,11 +101,11 @@ def create_competition_status_excel(now_date, token):
         sheet.cell(19, 9, response['daejeon']['social_applicant']['71-80'])
         sheet.cell(20, 9, response['daejeon']['social_applicant']['-70'])
 
-        xlsx.save(f"samoyed/static/competition_status_{now_date}.xlsx")
+        file = BytesIO(save_virtual_workbook(xlsx))
 
-        return {
-            "file_url": f"{BASE_URL}samoyed/static/competition_status_{now_date}.xlsx"
-        }
+        return send_file(file,
+                         as_attachment=True,
+                         attachment_filename=f"competition_status_{now_date}.xlsx")
 
     except Exception as e:
         return abort(500, e)

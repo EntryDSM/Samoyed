@@ -1,6 +1,6 @@
 import openpyxl
 from openpyxl.drawing.image import Image
-from flask import abort
+from flask import abort, send_file
 
 from samoyed.config import BASE_URL
 from samoyed.model.user import User
@@ -100,9 +100,10 @@ def create_admission_ticket(now_date):
 
         xlsx.save(f"samoyed/static/admission_ticket_{now_date}.xlsx")
         """
-        return {
-            "file_url": f"{BASE_URL}samoyed/static/admission_ticket.xlsx"
-        }
+
+        return send_file('samoyed/static/admission_ticket.xlsx',
+                         as_attachment=True,
+                         attachment_filename='admission_ticket.xlsx')
 
     except Exception as e:
         return abort(500, e)

@@ -1,18 +1,19 @@
 from openpyxl import load_workbook
-from flask import abort
+from openpyxl.writer.excel import save_virtual_workbook
+from flask import abort, send_file
+from io import BytesIO
 
 from samoyed.controller import (print_apply_type, print_additional_type, print_grade_type, print_is_daejeon,
-                        print_sex, print_graduated_year, print_origin_school, print_student_number)
+                                print_sex, print_graduated_year, print_origin_school, print_student_number)
 from samoyed.model import session
 from samoyed.model.user import User
 from samoyed.model.status import Status
 from samoyed.model.ungraduated_application import UnGraduatedApplication
 from samoyed.model.graduated_application import GraduatedApplication
 from samoyed.model.calculated_score import CalculatedScore
-from samoyed.config import BASE_URL
 
 
-def create_applicant_excel(now_date):
+def create_applicant_excel(date_time):
     try:
         xlsx = load_workbook(f"samoyed/static/applicant_info.xlsx")
         sheet = xlsx.get_active_sheet()
@@ -105,11 +106,11 @@ def create_applicant_excel(now_date):
             sheet.cell(idx, 71, user.User.self_introduction)
             sheet.cell(idx, 72, user.User.study_plan)
 
-        xlsx.save(f"samoyed/static/applicant_info_{now_date}.xlsx")
+        file = BytesIO(save_virtual_workbook(xlsx))
 
-        return {
-            "file_url": f"{BASE_URL}samoyed/static/applicant_info_{now_date}.xlsx"
-        }
+        return send_file(file,
+                         as_attachment=True,
+                         attachment_filename=f"applicant_info_{date_time}.xlsx")
 
     except Exception as e:
         abort(500, e)
