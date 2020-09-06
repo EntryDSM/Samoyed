@@ -14,6 +14,7 @@ def create_competition_status_excel(now_date, token):
         result = requests.get(STATUS_URL, headers={"Authorization": token})
 
         print(result)
+        print(result.text)
 
         response = json.loads(result.text)
 
