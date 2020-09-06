@@ -107,7 +107,9 @@ def create_applicant_excel(now_date):
 
         xlsx.save(f"samoyed/static/applicant_info_{now_date}.xlsx")
 
-        return f"{BASE_URL}samoyed/static/applicant_info_{now_date}.xlsx"
+        return {
+            "file_url": f"{BASE_URL}samoyed/static/applicant_info_{now_date}.xlsx"
+        }
 
     except Exception as e:
         abort(500, e)

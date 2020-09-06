@@ -101,7 +101,9 @@ def create_competition_status_excel(now_date, token):
 
         xlsx.save(f"samoyed/static/competition_status_{now_date}.xlsx")
 
-        return f"{BASE_URL}samoyed/static/competition_status_{now_date}.xlsx"
+        return {
+            "file_url": f"{BASE_URL}samoyed/static/competition_status_{now_date}.xlsx"
+        }
 
     except Exception as e:
         return abort(500, e)

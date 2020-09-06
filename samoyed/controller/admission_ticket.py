@@ -100,7 +100,9 @@ def create_admission_ticket(now_date):
 
         xlsx.save(f"samoyed/static/admission_ticket_{now_date}.xlsx")
         """
-        return f"{BASE_URL}samoyed/static/admission_ticket.xlsx"
+        return {
+            "file_url": f"{BASE_URL}samoyed/static/admission_ticket.xlsx"
+        }
 
     except Exception as e:
         return abort(500, e)
