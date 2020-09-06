@@ -101,9 +101,7 @@ def create_admission_ticket(now_date):
         xlsx.save(f"samoyed/static/admission_ticket_{now_date}.xlsx")
         """
 
-        return send_file('samoyed/static/admission_ticket.xlsx',
-                         as_attachment=True,
-                         attachment_filename='admission_ticket.xlsx')
+        return send_file('samoyed/static/admission_ticket.xlsx')
 
     except Exception as e:
         return abort(500, e)
