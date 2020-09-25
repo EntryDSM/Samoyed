@@ -26,7 +26,7 @@ def create_competition_status_excel(now_date, token):
         sheet.cell(6, 7, response['nationwide']['common_applicant']['applicant_count'])
 
         sheet.cell(7, 6, response['daejeon']['total_applicant_count'])
-        sheet.cell(7, 8, response['nationwide']['total_applicant_count'])
+        sheet.cell(7, 7, response['nationwide']['total_applicant_count'])
         sheet.cell(8, 6, response['total_applicant_count'])
 
         sheet.cell(4, 8, response['daejeon']['meister_applicant']['competition_rate'])
