@@ -4,7 +4,8 @@ from flask import abort, send_file
 from io import BytesIO
 
 from samoyed.controller import (print_apply_type, print_additional_type, print_grade_type, print_is_daejeon,
-                                print_sex, print_graduated_year, print_origin_school, print_student_number)
+                                print_sex, print_graduated_year, print_origin_school, print_student_number,
+                                print_is_final_submit)
 from samoyed.model import session
 from samoyed.model.user import User
 from samoyed.model.status import Status
@@ -18,8 +19,7 @@ def create_applicant_excel(date_time):
         xlsx = load_workbook(f"samoyed/static/applicant_info.xlsx")
         sheet = xlsx.get_active_sheet()
 
-        users = session.query(User, CalculatedScore, Status).join(CalculatedScore).join(Status).filter(
-            Status.is_final_submit == 1).all()
+        users = session.query(User, CalculatedScore, Status).join(CalculatedScore).join(Status).all()
 
         for idx, user in enumerate(users):
             idx = idx + 2
@@ -106,6 +106,7 @@ def create_applicant_excel(date_time):
             sheet.cell(idx, 70, user.CalculatedScore.final_score)
             sheet.cell(idx, 71, user.User.self_introduction)
             sheet.cell(idx, 72, user.User.study_plan)
+            sheet.cell(idx, 73, print_is_final_submit(user.Status.is_final_submit))
 
         file = BytesIO(save_virtual_workbook(xlsx))
 

@@ -103,3 +103,10 @@ def create_str_cell_location(row, column):
     str_column = chr(64 | column)
 
     return f"{str_column}{row}"
+
+
+def print_is_final_submit(is_final_submit):
+    if is_final_submit == 1:
+        return "완료"
+    else:
+        return "미완료"
