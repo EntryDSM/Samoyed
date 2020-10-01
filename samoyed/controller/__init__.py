@@ -67,18 +67,21 @@ def print_graduated_year(receipt_code, grade_type):
 
 
 def print_origin_school(receipt_code, grade_type):
-    if grade_type == "GED":
-        return ""
-    elif grade_type == "UNGRADUATED":
-        user_info = session.query(UnGraduatedApplication).filter(
-                    UnGraduatedApplication.user_receipt_code == receipt_code).first()
-        school_info = session.query(School).filter(School.school_code == user_info.school_code).first()
-        return f"{school_info.school_name}"
-    elif grade_type == "GRADUATED":
-        user_info = session.query(GraduatedApplication).filter(
-                    GraduatedApplication.user_receipt_code == receipt_code).first()
-        school_info = session.query(School).filter(School.school_code == user_info.school_code).first()
-        return f"{school_info.school_name}"
+    try:
+        if grade_type == "GED":
+            return ""
+        elif grade_type == "UNGRADUATED":
+            user_info = session.query(UnGraduatedApplication).filter(
+                        UnGraduatedApplication.user_receipt_code == receipt_code).first()
+            school_info = session.query(School).filter(School.school_code == user_info.school_code).first()
+            return school_info.school_name
+        elif grade_type == "GRADUATED":
+            user_info = session.query(GraduatedApplication).filter(
+                        GraduatedApplication.user_receipt_code == receipt_code).first()
+            school_info = session.query(School).filter(School.school_code == user_info.school_code).first()
+            return school_info.school_name
+    except AttributeError:
+        return ''
 
 
 def print_student_number(receipt_code, grade_type):
