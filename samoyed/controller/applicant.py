@@ -115,3 +115,6 @@ def create_applicant_excel(date_time):
 
     except Exception as e:
         abort(500, e)
+
+    finally:
+        session.close()
