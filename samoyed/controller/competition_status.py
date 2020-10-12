@@ -109,6 +109,3 @@ def create_competition_status_excel(now_date, token):
 
     except Exception as e:
         return abort(500, e)
-
-    finally:
-        session.close()
