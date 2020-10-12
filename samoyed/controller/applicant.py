@@ -18,7 +18,8 @@ def create_applicant_excel(date_time):
         xlsx = load_workbook(f"samoyed/static/applicant_info.xlsx")
         sheet = xlsx.get_active_sheet()
 
-        users = session.query(User, CalculatedScore, Status).join(CalculatedScore).join(Status).all()
+        users = session.query(User, CalculatedScore, Status).join(CalculatedScore).join(Status).filter(
+            Status.is_final_submit == 1).all()
 
         for idx, user in enumerate(users):
             idx = idx + 2
