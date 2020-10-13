@@ -26,7 +26,7 @@ def create_app():
     json_logging.init_request_instrument(_app)
 
     request_logger = json_logging.get_request_logger()
-    handler = RotatingFileHandler(filename='log.json', maxBytes=5000000, backupCount=10)
+    handler = RotatingFileHandler(filename='log/log.json', maxBytes=5000000, backupCount=10)
     handler.setFormatter(json_logging.JSONRequestLogFormatter())
     request_logger.addHandler(handler)
 
