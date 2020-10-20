@@ -9,18 +9,25 @@ def print_apply_type(apply_type):
         return "일반전형"
     elif apply_type == "MEISTER":
         return "마이스터전형"
-    elif apply_type == "SOCIAL_ONE_PARENT":
-        return "사회통합전형-한부모가족"
+    elif apply_type[:5] == ['SOCIAL'] :
+        return "사회통합전형"
+
+
+def print_social_type(apply_type):
+    if apply_type == "SOCIAL_ONE_PARENT":
+        return "한부모가족_"
     elif apply_type == "SOCIAL_FROM_NORTH":
-        return "사회통합전형-북한이탈주민"
+        return "북한이탈주민_"
     elif apply_type == "SOCIAL_MULTICULTURAL":
-        return "사회통합전형-다문화가정"
+        return "다문화가정_"
     elif apply_type == "SOCIAL_BASIC_LIVING":
-        return "사회통합전형-기초생활수급자"
+        return "기초생활수급자_"
     elif apply_type == "SOCIAL_LOWEST_INCOME":
-        return "사회통합전형-차상위계층"
+        return "차상위계층_"
     elif apply_type == "SOCIAL_TEEN_HOUSEHOLDER":
-        return "사회통합전형-소년소녀가장"
+        return "소년소녀가장_"
+    else:
+        return ""
 
 
 def print_additional_type(additional_type):
