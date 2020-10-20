@@ -4,6 +4,44 @@ from samoyed.model.school import School
 from samoyed.model.ungraduated_application import UnGraduatedApplication
 
 
+def print_excel_num(apply_type, is_daejeon, receipt_code):
+
+    user_type = 0
+    location = 0
+    additional_type = 0
+
+    if apply_type == "COMMON":
+        user_type = 1
+    elif apply_type == "MEISTER":
+        user_type = 2
+    elif apply_type[:5] == ['SOCIAL']:
+        user_type = 3
+
+    if is_daejeon == 1:
+        location = 1
+    elif is_daejeon == 0:
+        location = 2
+
+    if apply_type == "COMMON":
+        additional_type = 0
+    elif apply_type == "MEISTER":
+        additional_type = 0
+    elif apply_type == "SOCIAL_ONE_PARENT":
+        additional_type = 2
+    elif apply_type == "SOCIAL_FROM_NORTH":
+        additional_type = 5
+    elif apply_type == "SOCIAL_MULTICULTURAL":
+        additional_type = 6
+    elif apply_type == "SOCIAL_BASIC_LIVING":
+        additional_type = 1
+    elif apply_type == "SOCIAL_LOWEST_INCOME":
+        additional_type = 4
+    elif apply_type == "SOCIAL_TEEN_HOUSEHOLDER":
+        additional_type = 3
+
+    return f"{user_type}_{location}_{additional_type}_{receipt_code}"
+
+
 def print_apply_type(apply_type):
     if apply_type == "COMMON":
         return "일반전형"

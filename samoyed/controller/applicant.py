@@ -7,6 +7,7 @@ from samoyed.controller import (print_apply_type, print_additional_type, print_g
                                 print_sex, print_graduated_year, print_origin_school, print_student_number)
                                 print_sex, print_graduated_year, print_origin_school, print_student_number,
                                 print_social_type)
+                                print_social_type, print_excel_num)
 from samoyed.model import session
 from samoyed.model.user import User
 from samoyed.model.status import Status
@@ -27,6 +28,7 @@ def create_applicant_excel(date_time):
             idx = idx + 2
             sheet.cell(idx, 1, user.Status.exam_code)
             sheet.cell(idx, 2, user.User.receipt_code)
+            sheet.cell(idx, 2, print_excel_num(user.User.apply_type, user.User.is_daejeon, user.User.receipt_code))
             sheet.cell(idx, 3, print_apply_type(user.User.apply_type))
             sheet.cell(idx, 4, print_is_daejeon(user.User.is_daejeon))
             sheet.cell(idx, 5, print_additional_type(user.User.additional_type))
