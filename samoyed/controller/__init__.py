@@ -9,6 +9,7 @@ def print_excel_num(apply_type, is_daejeon, receipt_code):
     user_type = 0
     location = 0
     additional_type = 0
+    num = ''
 
     if apply_type == "COMMON":
         user_type = 1
@@ -39,7 +40,14 @@ def print_excel_num(apply_type, is_daejeon, receipt_code):
     elif apply_type == "SOCIAL_TEEN_HOUSEHOLDER":
         additional_type = 3
 
-    return f"{user_type}_{location}_{additional_type}_{receipt_code}"
+    if receipt_code < 10:
+        num = f'00{receipt_code}'
+    elif receipt_code < 100:
+        num = f'0{receipt_code}'
+    else:
+        num = receipt_code
+
+    return f"{user_type}{location}{additional_type}{num}"
 
 
 def print_apply_type(apply_type):
@@ -47,34 +55,30 @@ def print_apply_type(apply_type):
         return "일반전형"
     elif apply_type == "MEISTER":
         return "마이스터전형"
-    elif apply_type[:5] == ['SOCIAL'] :
+    elif apply_type.startswith('SOCIAL'):
         return "사회통합전형"
 
 
-def print_social_type(apply_type):
+def print_additional_type(apply_type, additional_type):
     if apply_type == "SOCIAL_ONE_PARENT":
-        return "한부모가족_"
+        return "한부모가족"
     elif apply_type == "SOCIAL_FROM_NORTH":
-        return "북한이탈주민_"
+        return "북한이탈주민"
     elif apply_type == "SOCIAL_MULTICULTURAL":
-        return "다문화가정_"
+        return "다문화가정"
     elif apply_type == "SOCIAL_BASIC_LIVING":
-        return "기초생활수급자_"
+        return "기초생활수급자"
     elif apply_type == "SOCIAL_LOWEST_INCOME":
-        return "차상위계층_"
+        return "차상위계층"
     elif apply_type == "SOCIAL_TEEN_HOUSEHOLDER":
-        return "소년소녀가장_"
+        return "소년소녀가장"
     else:
-        return ""
-
-
-def print_additional_type(additional_type):
-    if additional_type == "NOT_APPLICABLE":
-        return "일반"
-    elif additional_type == "PRIVILEGED_ADMISSION":
-        return "특례입학대상"
-    elif additional_type == "NATIONAL_MERIT":
-        return "국가유공자"
+        if additional_type == "NOT_APPLICABLE":
+            return "일반"
+        elif additional_type == "PRIVILEGED_ADMISSION":
+            return "특례입학대상"
+        elif additional_type == "NATIONAL_MERIT":
+            return "국가유공자"
 
 
 def print_grade_type(grade_type):
